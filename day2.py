@@ -46,6 +46,35 @@ def play_round(ai: chr, usr: chr) -> int:
         return -1
 
 
+
+def throw_game(a, u):
+    
+    
+    
+    if u == 'X':
+        if a == 'A':
+            return 3
+        elif a == 'B':
+            return 1
+        else:
+            return 2
+    elif u == 'Y':
+        if a == 'A':
+            ai_play = 1
+        elif a == 'B':
+            ai_play = 2
+        elif a == 'C':
+            ai_play = 3
+        return ai_play + 3
+    elif u == 'Z':
+        if a == 'A':
+            return 2 + 6
+        elif a == 'B':
+            return 3 + 6
+        else:
+            return 1 + 6
+    
+
 if __name__ == '__main__':
 
     
@@ -55,12 +84,13 @@ if __name__ == '__main__':
 
 
     game = 0
-    
+    thrown = 0
     for moves in data:
         game += play_round(moves[0], moves[2])
-        
+        thrown += throw_game(moves[0], moves[2])
         
     print("TOTAL SCORE", game)
+    print("ULTIMATE WIN:", thrown)
     
 
 
